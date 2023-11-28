@@ -1,0 +1,130 @@
+Observe o código a seguir
+
+Confira um programa em Python que simula um sistema de gerenciamento de uma loja de produtos eletrônicos. Neste programa, usamos classes para representar diferentes tipos de produtos (por exemplo, smartphones e laptops) e funções para realizar operações como adicionar produtos ao estoque, exibir o catálogo, e calcular o valor total dos produtos no carrinho de compras. Sua tarefa é adicionar um produto do tipo "Tablet" à loja. Para isso, você deve criar uma nova classe Tablet que herda da classe Produto atributos usando o super( ). 
+
+# Confira um programa em Python que simula um sistema de gerenciamento de uma loja de produtos eletrônicos. Neste programa, usamos classes para representar diferentes tipos de produtos (por exemplo, smartphones e laptops) e funções para realizar operações como adicionar produtos ao estoque, exibir o catálogo, e calcular o valor total dos produtos no carrinho de compras.
+
+"""
+Nesse código vamos trabalhar hierarquia de herança. super() é uma função incorporada em Python que é usada para chamar métodos da classe pai (ou classe base) em uma hierarquia de herança. Ela é frequentemente usada no contexto de classes derivadas que herdam de uma classe base.
+
+Ao utilizar super(), você pode acessar os métodos e atributos da classe pai sem precisar explicitamente mencionar o nome da classe pai. Isso torna o código mais flexível e facilita as mudanças na hierarquia de classes, já que você não precisa alterar manualmente todas as ocorrências do nome da classe pai se ela for alterada.
+Exemplo:
+class Animal:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def fazer_som(self):
+        print("Algum som genérico")
+
+class Gato(Animal):
+    def __init__(self, nome, cor_pelo):
+        super().__init__(nome)
+        self.cor_pelo = cor_pelo
+
+    def fazer_som(self):
+        print("Miau!")
+
+"""
+
+class Produto:
+    def __init__(self, nome, preco):
+        self.nome = nome
+        self.preco = preco
+
+class Smartphone(Produto):
+    def __init__(self, nome, preco, sistema_operacional):
+        super().__init__(nome, preco)
+        self.sistema_operacional = sistema_operacional
+
+class Laptop(Produto):
+    def __init__(self, nome, preco, marca):
+        super().__init__(nome, preco)
+        self.marca = marca
+
+class LojaEletronicos:
+    def __init__(self):
+        self.estoque = []
+
+    def adicionar_produto(self, produto):
+        self.estoque.append(produto)
+        print(f"{produto.nome} foi adicionado ao estoque.")
+
+    def exibir_catalogo(self):
+        print("Catálogo da Loja:")
+        for produto in self.estoque:
+            print(f"{produto.nome} - R${produto.preco:.2f}")
+
+    def calcular_total_carrinho(self, carrinho):
+        total = sum(produto.preco for produto in carrinho)
+        return total
+
+# Exemplo de utilização do programa:
+loja = LojaEletronicos()
+
+# Adicionando produtos ao estoque
+iphone = Smartphone("iPhone 13", 5999.99, "iOS")
+dell_laptop = Laptop("Dell XPS 13", 4599.99, "Dell")
+loja.adicionar_produto(iphone)
+loja.adicionar_produto(dell_laptop)
+
+# Exibindo o catálogo
+loja.exibir_catalogo()
+
+# Simulando um carrinho de compras
+carrinho_compras = [iphone, dell_laptop]
+
+# Calculando o valor total do carrinho
+total_carrinho = loja.calcular_total_carrinho(carrinho_compras)
+print(f"Valor total do carrinho de compras: R${total_carrinho:.2f}")
+
+class Produto(Tablet):
+
+    def __init__(self, nome, preco, sistema_operacional):
+
+        super().__init__(nome, preco)
+
+        self.sistema_operacional = sistema_operacional
+
+2
+
+2
+class Tablet(Produto):
+
+    def __init__(self, nome, preco, sistema_operacional):
+
+        super().__init__(nome, preco)
+
+        self.sistema_operacional = sistema_operacional
+
+3
+
+3
+class Tablet( ):
+
+    def __init__(self, nome, preco, sistema_operacional):
+
+        self.super().__init__(nome, preco)
+
+        self.sistema_operacional = sistema_operacional
+
+4
+
+4
+class Produto(Tablet):
+
+    def __init__(self, nome, preco, sistema_operacional):
+
+        self.super().__init__(nome, preco)
+
+        sistema_operacional = self.sistema_operacional
+
+5
+
+5
+class Tablet(Produto):
+
+    def __init__(self, nome, preco, sistema_operacional):
+
+        self.super().__init__(nome, preco)
+
+        self.sistema_operacional = sistema_operacional
